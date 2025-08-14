@@ -9,7 +9,6 @@ authors = [
 requires-python = ">=3.13"
 dependencies = [
     "bs4>=0.0.2",
-    "pytest>=8.4.1",
     "requests>=2.32.4",
 ]
 
@@ -21,6 +20,7 @@ build-backend = "uv_build"
 dev = [
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
+    "requests-mock>=1.12.1",
 ]
 
 [tool.pytest.ini_options]

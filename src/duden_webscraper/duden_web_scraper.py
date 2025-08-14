@@ -27,6 +27,8 @@ class DudenWebScraper:
         word_usage = None
 
         second_tuple_item = tuples_items[1].find(class_="tuple__key").text
+
+
         is_frequency = second_tuple_item.find("Häufigkeit") == 0
         frequency_position = 1 if is_frequency else 2
 
@@ -44,7 +46,7 @@ class DudenWebScraper:
         if len(tuples_contents_pieces) > 1:
             word_gender = tuples_contents_pieces[1] if tuples_contents_pieces[1] is not None else None
 
-        lemma = main.find(class_="lemma__main").text.replace("", "")
+        lemma = word
         determiner = main.find(class_="lemma__determiner")
         lemma_determiner = determiner.text if len(determiner) > 0 else None
 
@@ -164,7 +166,7 @@ class DudenWebScraper:
         return result
 
     def __get(self, endpoint: str):
-        response = requests.get(Endpoint.BASE + "/" + endpoint)
+        response = requests.get(Endpoint.BASE + endpoint)
 
         if response.status_code != 200:
             raise WordInfoError("failed to get word info")
